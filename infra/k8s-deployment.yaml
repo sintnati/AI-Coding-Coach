@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pga-gateway
+  namespace: pga-system
+  labels:
+    app: pga-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pga-gateway
+  template:
+    metadata:
+      labels:
+        app: pga-gateway
+    spec:
+      containers:
+        - name: pga-gateway
+          image: your-dockerhub-username/pga-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GCP_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: pga-config
+                  key: GCP_PROJECT
+
+            - name: GCP_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: pga-config
+                  key: GCP_REGION
+
+            - name: LLM_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: pga-config
+                  key: LLM_ENDPOINT
+
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/var/secrets/google/sa.json"
+
+          volumeMounts:
+            - name: google-sa
+              mountPath: /var/secrets/google
+              readOnly: true
+
+      volumes:
+        - name: google-sa
+          secret:
+            secretName: gcp-service-account

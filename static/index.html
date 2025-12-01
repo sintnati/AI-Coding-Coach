@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Coach - Multi-Agent System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <h1>AI Coding Coach</h1>
+            </div>
+            <p class="tagline">Multi-Agent AI System for Comprehensive Coding Analysis</p>
+            <div class="agent-badges">
+                <span class="badge">Analyzer Agent</span>
+                <span class="badge">Weakness Detector</span>
+                <span class="badge">Task Generator</span>
+                <span class="badge">Orchestrator</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="card glass-card">
+                    <h2><i class="fas fa-link"></i> Connect Your Coding Profiles</h2>
+                    <form id="analyzeForm">
+                        <div class="form-group">
+                            <label for="userId">
+                                <i class="fas fa-user"></i> User ID
+                            </label>
+                            <input type="text" id="userId" name="userId" class="form-control"
+                                placeholder="Enter your unique user ID" required>
+                        </div>
+
+                        <div class="platforms-grid">
+                            <div class="form-group">
+                                <label for="codeforcesHandle">
+                                    <span class="platform-icon">🔴</span> Codeforces
+                                </label>
+                                <input type="text" id="codeforcesHandle" name="codeforcesHandle" class="form-control"
+                                    placeholder="Your handle">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="leetcodeHandle">
+                                    <span class="platform-icon">🟡</span> LeetCode
+                                </label>
+                                <input type="text" id="leetcodeHandle" name="leetcodeHandle" class="form-control"
+                                    placeholder="Your username">
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                            <span class="btn-text">
+                                <i class="fas fa-rocket"></i> Analyze My Progress
+                            </span>
+                            <span class="btn-loader" style="display: none;">
+                                <div class="spinner"></div>
+                                <span>Analyzing...</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <!-- Growth Metrics -->
+                <div class="card glass-card">
+                    <h2><i class="fas fa-chart-line"></i> Growth Metrics</h2>
+                    <div class="metrics-grid" id="metricsGrid">
+                        <!-- Metrics will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Platform Stats -->
+                <div class="card glass-card">
+                    <h2><i class="fas fa-code"></i> Platform Statistics</h2>
+                    <div class="platform-stats" id="platformStats">
+                        <!-- Platform stats will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- AI Analysis from Analyzer Agent -->
+                <div class="card glass-card">
+                    <h2><i class="fas fa-brain"></i> AI Analysis <span class="agent-tag">Analyzer Agent</span></h2>
+                    <div class="analysis-content" id="analysisContent">
+                        <!-- Analysis will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Weaknesses from Weakness Detector Agent -->
+                <div class="card glass-card" id="weaknessSection" style="display: none;">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Weakness Detection <span class="agent-tag">Weakness
+                            Detector Agent</span></h2>
+                    <div class="weakness-content" id="weaknessContent">
+                        <!-- Weaknesses will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Tasks from Task Generator Agent -->
+                <div class="card glass-card">
+                    <h2><i class="fas fa-tasks"></i> Personalized Tasks <span class="agent-tag">Task Generator
+                            Agent</span></h2>
+                    <div class="tasks-list" id="tasksList">
+                        <!-- Tasks will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Agent Execution Insights -->
+                <div class="card glass-card">
+                    <h2><i class="fas fa-network-wired"></i> Multi-Agent System Insights <span
+                            class="agent-tag">Orchestrator Agent</span></h2>
+                    <div class="agent-insights" id="agentInsights">
+                        <!-- Agent insights will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="card glass-card error-card">
+                    <div class="error-icon">⚠️</div>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-secondary" onclick="hideError()">
+                        <i class="fas fa-redo"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by Gemini AI • Multi-Agent System • Supporting LeetCode & Codeforces</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
